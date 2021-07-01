@@ -1,17 +1,6 @@
 <template>
-  <el-dialog
-    :title="!dataForm.id ? '新增' : '修改'"
-    :close-on-click-modal="false"
-    append-to-body
-    :visible.sync="visible"
-  >
-    <el-form
-      :model="dataForm"
-      :rules="dataRule"
-      ref="dataForm"
-      @keyup.enter.native="dataFormSubmit()"
-      label-width="120px"
-    >
+  <el-dialog :title="!dataForm.id ? '新增' : '修改'" :close-on-click-modal="false" append-to-body :visible.sync="visible">
+    <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="120px">
       <el-form-item label="活动场次id" prop="promotionSessionId">
         <el-input v-model="sessionId" placeholder="活动场次id" :disabled="true"></el-input>
       </el-form-item>
@@ -113,8 +102,7 @@ export default {
         if (valid) {
           this.$http({
             url: this.$http.adornUrl(
-              `/coupon/seckillskurelation/${
-                !this.dataForm.id ? "save" : "update"
+              `/coupon/seckillskurelation/${!this.dataForm.id ? "save" : "update"
               }`
             ),
             method: "post",

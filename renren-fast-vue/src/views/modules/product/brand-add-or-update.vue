@@ -11,12 +11,7 @@
         <el-input v-model="dataForm.descript" placeholder="介绍"></el-input>
       </el-form-item>
       <el-form-item label="显示状态" prop="showStatus">
-        <el-switch
-          v-model="dataForm.showStatus"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          :active-value="1"
-          :inactive-value="0"></el-switch>
+        <el-switch v-model="dataForm.showStatus" active-color="#13ce66" inactive-color="#ff4949" :active-value="1" :inactive-value="0"></el-switch>
       </el-form-item>
       <el-form-item label="检索首字母" prop="firstLetter">
         <el-input v-model="dataForm.firstLetter" placeholder="检索首字母"></el-input>
@@ -84,7 +79,7 @@ export default {
             validator: (rule, value, callback) => {
               if (value == "") {
                 callback(new Error("排序字段必须填写"));
-              } else if (!Number.isInteger(value) || value<0) {
+              } else if (!Number.isInteger(value) || value < 0) {
                 callback(new Error("排序必须是一个大于等于0的整数"));
               } else {
                 callback();
@@ -127,9 +122,7 @@ export default {
       this.$refs["dataForm"].validate(valid => {
         if (valid) {
           this.$http({
-            url: this.$http.adornUrl(
-              `/product/brand/${!this.dataForm.brandId ? "save" : "update"}`
-            ),
+            url: this.$http.adornUrl(`/product/brand/${!this.dataForm.brandId ? "save" : "update"}`),
             method: "post",
             data: this.$http.adornData({
               brandId: this.dataForm.brandId || undefined,

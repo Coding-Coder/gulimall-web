@@ -8,13 +8,7 @@
         <el-button @click="getDataList()">查询</el-button>
       </el-form-item>
     </el-form>
-    <el-table
-      :data="dataList"
-      border
-      v-loading="dataListLoading"
-      @selection-change="selectionChangeHandle"
-      style="width: 100%;"
-    >
+    <el-table :data="dataList" border v-loading="dataListLoading" @selection-change="selectionChangeHandle" style="width: 100%;">
       <el-table-column type="selection" header-align="center" align="center" width="50"></el-table-column>
       <el-table-column prop="id" header-align="center" align="center" label="id"></el-table-column>
       <el-table-column prop="couponId" header-align="center" align="center" label="优惠券id"></el-table-column>
@@ -27,12 +21,7 @@
         </template>
       </el-table-column>
       <el-table-column prop="createTime" header-align="center" align="center" label="创建时间"></el-table-column>
-      <el-table-column
-        prop="useType"
-        header-align="center"
-        align="center"
-        label="使用状态"
-      >
+      <el-table-column prop="useType" header-align="center" align="center" label="使用状态">
         <template slot-scope="scope">
           <el-tag type="primary" v-if="scope.row.useType==0">未使用</el-tag>
           <el-tag type="success" v-if="scope.row.useType==1">已使用</el-tag>
@@ -43,15 +32,7 @@
       <el-table-column prop="orderId" header-align="center" align="center" label="订单id"></el-table-column>
       <el-table-column prop="orderSn" header-align="center" align="center" label="订单号"></el-table-column>
     </el-table>
-    <el-pagination
-      @size-change="sizeChangeHandle"
-      @current-change="currentChangeHandle"
-      :current-page="pageIndex"
-      :page-sizes="[10, 20, 50, 100]"
-      :page-size="pageSize"
-      :total="totalPage"
-      layout="total, sizes, prev, pager, next, jumper"
-    ></el-pagination>
+    <el-pagination @size-change="sizeChangeHandle" @current-change="currentChangeHandle" :current-page="pageIndex" :page-sizes="[10, 20, 50, 100]" :page-size="pageSize" :total="totalPage" layout="total, sizes, prev, pager, next, jumper"></el-pagination>
     <!-- 弹窗, 新增 / 修改 -->
   </div>
 </template>
@@ -127,8 +108,8 @@ export default {
       var ids = id
         ? [id]
         : this.dataListSelections.map(item => {
-            return item.id;
-          });
+          return item.id;
+        });
       this.$confirm(
         `确定对[id=${ids.join(",")}]进行[${id ? "删除" : "批量删除"}]操作?`,
         "提示",

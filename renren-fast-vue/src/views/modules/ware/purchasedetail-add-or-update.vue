@@ -1,16 +1,6 @@
 <template>
-  <el-dialog
-    :title="!dataForm.id ? '新增' : '修改'"
-    :close-on-click-modal="false"
-    :visible.sync="visible"
-  >
-    <el-form
-      :model="dataForm"
-      :rules="dataRule"
-      ref="dataForm"
-      @keyup.enter.native="dataFormSubmit()"
-      label-width="120px"
-    >
+  <el-dialog :title="!dataForm.id ? '新增' : '修改'" :close-on-click-modal="false" :visible.sync="visible">
+    <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="120px">
       <el-form-item label="采购商品id" prop="skuId">
         <el-input v-model="dataForm.skuId" placeholder="采购商品id"></el-input>
       </el-form-item>
@@ -66,7 +56,7 @@ export default {
       }
     };
   },
-  created(){
+  created() {
     this.getWares();
   },
   methods: {

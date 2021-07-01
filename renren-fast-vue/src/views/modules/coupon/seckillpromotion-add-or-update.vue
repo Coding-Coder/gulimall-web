@@ -1,27 +1,11 @@
 <template>
-  <el-dialog
-    :title="!dataForm.id ? '新增' : '修改'"
-    :close-on-click-modal="false"
-    :visible.sync="visible"
-  >
-    <el-form
-      :model="dataForm"
-      :rules="dataRule"
-      ref="dataForm"
-      @keyup.enter.native="dataFormSubmit()"
-      label-width="120px"
-    >
+  <el-dialog :title="!dataForm.id ? '新增' : '修改'" :close-on-click-modal="false" :visible.sync="visible">
+    <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="120px">
       <el-form-item label="活动标题" prop="title">
         <el-input v-model="dataForm.title" placeholder="活动标题"></el-input>
       </el-form-item>
       <el-form-item label="生效日期" prop="enableStartTime">
-        <el-date-picker
-          v-model="dataForm.timeRange"
-          type="datetimerange"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-        ></el-date-picker>
+        <el-date-picker v-model="dataForm.timeRange" type="datetimerange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
       </el-form-item>
       <el-form-item label="上下线状态" prop="status">
         <el-select v-model="dataForm.status" placeholder="上下线状态">
@@ -96,8 +80,7 @@ export default {
         if (valid) {
           this.$http({
             url: this.$http.adornUrl(
-              `/coupon/seckillpromotion/${
-                !this.dataForm.id ? "save" : "update"
+              `/coupon/seckillpromotion/${!this.dataForm.id ? "save" : "update"
               }`
             ),
             method: "post",

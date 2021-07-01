@@ -1,16 +1,6 @@
 <template>
-  <el-dialog
-    :title="!dataForm.id ? '新增' : '修改'"
-    :close-on-click-modal="false"
-    :visible.sync="visible"
-  >
-    <el-form
-      :model="dataForm"
-      :rules="dataRule"
-      ref="dataForm"
-      @keyup.enter.native="dataFormSubmit()"
-      label-width="120px"
-    >
+  <el-dialog :title="!dataForm.id ? '新增' : '修改'" :close-on-click-modal="false" :visible.sync="visible">
+    <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="120px">
       <el-form-item label="member_id" prop="memberId">
         <el-input v-model="dataForm.memberId" placeholder="member_id"></el-input>
       </el-form-item>
@@ -28,8 +18,8 @@
       </el-form-item>
       <el-form-item label="通知方式" prop="noticeType">
         <el-select v-model="dataForm.noticeType" placeholder="请选择">
-          <el-option  label="短信" :value="0"></el-option>
-          <el-option  label="邮件" :value="1"></el-option>
+          <el-option label="短信" :value="0"></el-option>
+          <el-option label="邮件" :value="1"></el-option>
         </el-select>
       </el-form-item>
     </el-form>
@@ -110,8 +100,7 @@ export default {
         if (valid) {
           this.$http({
             url: this.$http.adornUrl(
-              `/coupon/seckillskunotice/${
-                !this.dataForm.id ? "save" : "update"
+              `/coupon/seckillskunotice/${!this.dataForm.id ? "save" : "update"
               }`
             ),
             method: "post",

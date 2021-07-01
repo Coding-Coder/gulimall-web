@@ -1,18 +1,7 @@
 <template>
   <div class="mod-config">
-    <el-dialog
-      :title="!dataForm.id ? '新增' : '修改'"
-      :close-on-click-modal="false"
-      :visible.sync="visible"
-      :append-to-body="true"
-    >
-      <el-form
-        :model="dataForm"
-        :rules="dataRule"
-        ref="dataForm"
-        @keyup.enter.native="dataFormSubmit()"
-        label-width="120px"
-      >
+    <el-dialog :title="!dataForm.id ? '新增' : '修改'" :close-on-click-modal="false" :visible.sync="visible" :append-to-body="true">
+      <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="120px">
         <el-form-item label="spu_id" prop="skuId">
           <el-input v-model="dataForm.skuId" placeholder="spu_id"></el-input>
         </el-form-item>
@@ -94,8 +83,7 @@ export default {
         if (valid) {
           this.$http({
             url: this.$http.adornUrl(
-              `/coupon/skufullreduction/${
-                !this.dataForm.id ? "save" : "update"
+              `/coupon/skufullreduction/${!this.dataForm.id ? "save" : "update"
               }`
             ),
             method: "post",

@@ -3,17 +3,7 @@
     <el-switch v-model="draggable" active-text="开启拖拽" inactive-text="关闭拖拽"></el-switch>
     <el-button v-if="draggable" @click="batchSave">批量保存</el-button>
     <el-button type="danger" @click="batchDelete">批量删除</el-button>
-    <el-tree
-      :data="menus"
-      :props="defaultProps"
-      :expand-on-click-node="false"
-      show-checkbox
-      node-key="catId"
-      :default-expanded-keys="expandedKey"
-      :draggable="draggable"
-      :allow-drop="allowDrop"
-      @node-drop="handleDrop"
-      ref="menuTree">
+    <el-tree :data="menus" :props="defaultProps" :expand-on-click-node="false" show-checkbox node-key="catId" :default-expanded-keys="expandedKey" :draggable="draggable" :allow-drop="allowDrop" @node-drop="handleDrop" ref="menuTree">
       <span class="custom-tree-node" slot-scope="{ node, data }">
         <span>{{ node.label }}</span>
         <span>
@@ -47,7 +37,6 @@
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-
 export default {
   data() {
     return {
@@ -113,7 +102,7 @@ export default {
           });
           this.getMenus();
         });
-      }).catch(() => {});
+      }).catch(() => { });
     },
     batchSave() {
       this.$http({
@@ -312,7 +301,7 @@ export default {
           //设置需要默认展开的菜单
           this.expandedKey = [node.parent.data.catId];
         });
-      }).catch(() => {});
+      }).catch(() => { });
       console.log("remove", node, data);
     }
   }

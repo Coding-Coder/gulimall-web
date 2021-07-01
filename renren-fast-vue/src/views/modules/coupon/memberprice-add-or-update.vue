@@ -1,16 +1,6 @@
 <template>
-  <el-dialog
-    :title="!dataForm.id ? '新增' : '修改'"
-    :close-on-click-modal="false"
-    :visible.sync="visible"
-  >
-    <el-form
-      :model="dataForm"
-      :rules="dataRule"
-      ref="dataForm"
-      @keyup.enter.native="dataFormSubmit()"
-      label-width="120px"
-    >
+  <el-dialog :title="!dataForm.id ? '新增' : '修改'" :close-on-click-modal="false" :visible.sync="visible">
+    <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="120px">
       <el-form-item label="sku_id" prop="skuId">
         <el-input v-model="dataForm.skuId" placeholder="sku_id"></el-input>
       </el-form-item>
@@ -24,13 +14,7 @@
         <el-input v-model="dataForm.memberPrice" placeholder="会员对应价格"></el-input>
       </el-form-item>
       <el-form-item label="可否叠加其他优惠" prop="addOther">
-        <el-switch
-          v-model="dataForm.addOther"
-          :active-value="1"
-          inactive-value="0"
-          active-text="可叠加"
-          inactive-text="不可叠加"
-        ></el-switch>
+        <el-switch v-model="dataForm.addOther" :active-value="1" inactive-value="0" active-text="可叠加" inactive-text="不可叠加"></el-switch>
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
